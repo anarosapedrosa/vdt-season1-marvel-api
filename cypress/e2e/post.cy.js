@@ -26,58 +26,57 @@ describe ('POST /characters', function(){
 
     })
 
-    context('quando não preencho todos os campos obrigatórios', function(){
+    context('Quando não preencho todos os campos obrigatórios', function(){
        
         const characters = [
             {
                 name: '',
-                alias: 'Professor X',
-                team: ['x-men', 'vingadores'],
+                alias: 'Thor',
+                team: ['vingadores'],
                 active: true
             },
             {
-                alias: 'Professor X',
-                team: ['x-men', 'vingadores'],
+                alias: 'Thor',
+                team: ['vingadores'],
                 active: true
             },
             {
-                name: 'Charles Xavier',
+                name: 'Thor',
                 alias: '',
-                team: ['x-men', 'vingadores'],
+                team: ['vingadores'],
                 active: true
             },
             {
-                name: 'Charles Xavier',
-                team: ['x-men', 'vingadores'],
+                name: 'Thor',
+                team: ['vingadores'],
                 active: true
             },
             {
-                name: 'Charles Xavier',
-                alias: 'Professor X',
+                name: 'Thor',
+                alias: 'Thor',
                 team: '',
                 active: true
             },
             {
-                name: 'Charles Xavier',
-                alias: 'Professor X',
+                name: 'Thor',
+                alias: 'Thor',
                 active: true
             },
             {
-                name: 'Charles Xavier',
-                alias: 'Professor X',
-                team: ['x-men', 'vingadores']
+                name: 'Thor',
+                alias: 'Thor',
+                team: ['vingadores']
             }   
         
         ]    
 
-        characters.forEach(function(pay){
-            it('não deve cadastrar personagem', function(){
-                cy.postCharacter(pay).then(function(response){
+        characters.forEach(function(payload){
+            it('não deve cadastrar um personagem', function(){
+                cy.postCharacter(payload).then(function(response){
                     expect(response.status).to.eql(400)
-                    cy.log(response.body.validation.body.message)
                     const message = response.body.validation.body.message
-                    const hasItemDetails = (message.includes('is required')) || (message.includes('is not allowed to be empty') || message.includes ('must be an array'))
-                    expect(hasItemDetails).to.be.true
+                    const item = (message.includes('is required')) || (message.includes('is not allowed to be empty') || message.includes ('must be an array'))
+                    expect(item).to.be.true
 
                 }) 
             })
@@ -85,7 +84,7 @@ describe ('POST /characters', function(){
     })
        
        
-    context('quando o personagem já existe', function(){
+    context('Quando o personagem já existe', function(){
         const character = {
             name: 'Pietro Maxioff',
             alias: 'Mercurio',
