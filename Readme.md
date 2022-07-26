@@ -28,15 +28,17 @@
 
 ### Busca de Personagens
 
-- [ ] Deve retornar uma lista de personagens cadastrados
-- [ ] Deve poder buscar por personagem por nome
-- [ ] Deve poder buscar personagem pelo id
-- [ ] Deve retornar 404 ao buscar por id não cadastrado
+- [x] Deve retornar uma lista de personagens cadastrados
+- [x] Deve poder buscar por personagem por nome
+- [x] Deve poder buscar personagem pelo id
+- [x] Deve retornar 404 ao buscar por id não cadastrado
+- [x] Deve retornar 400 ao buscar por id com tamanho errado
 
 ### Remover Personagem
 
-- [ ] Deve poder remover por id, um personagem cadastrado
-- [ ] Deve retornar não encontrado ao remover por id não cadastrado
+- [x] Deve poder remover por id, um personagem cadastrado
+- [x] Deve retornar não encontrado ao remover por id não cadastrado
+- [x] Deve retornar 400 ao remover por id com tamanho errado
 
 ## 🚀 Tecnologias
 

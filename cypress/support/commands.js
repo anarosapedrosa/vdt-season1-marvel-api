@@ -63,6 +63,67 @@ Cypress.Commands.add('postCharacter', function(payload){
         failOnStatusCode: false
     }).then(function(response){
         return response
-    })
-    
+        })
 })
+
+// GET requisição para listagem de personagens
+Cypress.Commands.add('getCharacters', function(){
+    cy.api({
+        method: 'GET',
+        url: '/characters',
+        headers:{
+            Authorization: Cypress.env('token')
+        },
+        failOnStatusCode: false
+    }).then(function(response){
+        return response
+    })
+
+})
+
+// GET requisição para buscar personagem por nome
+Cypress.Commands.add('getCharacterByName', function(name){
+    cy.api({
+        method: 'GET',
+        url: '/characters?name='+name,
+        headers:{
+            Authorization: Cypress.env('token')
+        },
+        failOnStatusCode: false
+    }).then(function(response){
+        return response
+    })
+
+})
+
+// GET requisição para buscar personagem por ID
+Cypress.Commands.add('getCharacterByID', function(ID){
+    cy.api({
+        method: 'GET',
+        url: '/characters/'+ID,
+        headers:{
+            Authorization: Cypress.env('token')
+        },
+        failOnStatusCode: false
+    }).then(function(response){
+        return response
+    })
+
+})
+
+// requisição para remover personagem cadastrado por ID
+Cypress.Commands.add('deleteCharacterByID', function(ID){
+    cy.api({
+        method: 'DELETE',
+        url: '/characters/'+ID,
+        headers:{
+            Authorization: Cypress.env('token')
+        },
+        failOnStatusCode: false
+    }).then(function(response){
+        return response
+    })
+
+})
+
+//https://marvel-qa-cademy.herokuapp.com/characters/62d07c5d5a8facc001644cac//
